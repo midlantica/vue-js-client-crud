@@ -4,7 +4,11 @@ module.exports = {
       '/api': {
         target: 'https://localhost:8081',
         secure: false,
-        changeOrigin: true
+        changeOrigin: true,
+        ws: true,
+        onProxyReq: function (request) {
+          request.setHeader('origin', 'http://localhost:8081')
+        }
       }
     }
   }
